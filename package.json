@@ -1,0 +1,84 @@
+{
+  "name": "ssr-cra",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.19.2",
+    "deepmerge": "^4.2.2",
+    "escape-string-regexp": "^4.0.0",
+    "eslint-config-problems": "^4.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-react-hooks": "^4.0.5",
+    "eslint-plugin-sonarjs": "^0.5.0",
+    "express": "^4.17.1",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-ssr-scripts": "2.2.3",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.88.2",
+    "serialize-javascript": "^4.0.0",
+    "source-map-explorer": "^2.4.2",
+    "styled-components": "^5.1.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "shared-config"
+    ],
+    "rules": {
+      "additional-rule": "warn"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {
+          "additional-typescript-only-rule": "warn"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "start": "react-ssr-scripts start",
+    "build": "react-ssr-scripts build",
+    "test": "react-ssr-scripts test",
+    "eject": "react-ssr-scripts eject",
+    "analyze": "source-map-explorer 'build/public/static/js/*.js'",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addon-storyshots": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react": "^5.3.19",
+    "babel-loader": "^8.0.6",
+    "react-test-renderer": "^16.13.1"
+  },
+  "resolutions": {
+    "babel-loader": "^8.0.6"
+  }
+}

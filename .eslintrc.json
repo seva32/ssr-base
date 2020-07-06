@@ -1,0 +1,48 @@
+{
+  "extends": [
+    "react-app",
+    "problems"
+  ],
+  "plugins": [
+    "react-hooks",
+    "import"
+  ],
+  "ecmaFeatures": {
+    "modules": true,
+    "jsx": true,
+    "experimentalObjectRestSpread": true
+  },
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "import/no-unresolved": [
+      2,
+      {
+        "commonjs": true,
+        "amd": true
+      }
+    ],
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/default": 2,
+    "import/export": 2,
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "local",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ],
+    "react/prop-types": "error"
+  }
+}
