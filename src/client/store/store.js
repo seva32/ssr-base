@@ -3,26 +3,28 @@ import reduxThunk from "redux-thunk";
 import reduxPromise from "redux-promise";
 import logger from "redux-logger";
 import merge from "deepmerge";
+import { persistStore } from "redux-persist";
 
-import reducer from "../reducers";
+import persistedReducer from "../reducers";
 
-const configureStore = () => {
+const configureStore = (initialState) => {
   const token = localStorage.getItem("token") || "";
 
   const preloadedState = window.PRELOADED_STATE;
 
-  const initialState = merge(preloadedState, {
+  const buffer = merge(preloadedState, {
     auth: { authenticated: token, errorMessage: "" },
   });
+
+  initialState = merge(initialState, buffer);
 
   const enhancer =
     process.env.NODE_ENV !== "production"
       ? compose(applyMiddleware(reduxPromise, reduxThunk, logger))
       : compose(applyMiddleware(reduxPromise, reduxThunk));
 
-  const store = createStore(reducer, initialState, enhancer);
-
-  return store;
+  return createStore(persistedReducer, initialState, enhancer);
 };
-
-export default configureStore;
+const store = configureStore({});
+const persistor = persistStore(store);
+export default { store, persistor };

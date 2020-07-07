@@ -6,15 +6,25 @@ import { Provider as ReduxProvider } from "react-redux";
 import "./index.scss";
 import "./index.css";
 import App from "./App.jsx";
-import configureStore from "./store/store";
+import configRedux from "./store/store";
 
-const store = configureStore();
+const { store, persistor } = configRedux;
 
-ReactDOM.hydrate(
-  <ReduxProvider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ReduxProvider>,
-  document.getElementById("root")
-);
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+
+const Root = () => {
+  return (
+    <ReduxProvider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ReduxProvider>
+  );
+};
+
+persistor.subscribe(() => {
+  const { bootstrapped } = persistor.getState();
+  if (bootstrapped) {
+    renderMethod(<Root />, document.getElementById("root"));
+  }
+});
