@@ -1,8 +1,12 @@
 /* eslint-disable max-len */
-import { AUTH_USER, AUTH_ERROR_SIGNUP, AUTH_ERROR_SIGNIN } from "../actions/auth/authActionTypes";
+import {
+  AUTH_USER,
+  AUTH_ERROR_SIGNUP,
+  AUTH_ERROR_SIGNIN,
+} from "../actions/auth/authActionTypes";
 
 const initialState = {
-  authenticated: "",
+  authenticated: "yes",
   errorMessageSignUp: "",
   errorMessageSignIn: "",
 };

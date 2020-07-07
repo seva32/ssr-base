@@ -10,6 +10,8 @@ import { List } from "semantic-ui-react";
 import * as actions from "../../actions";
 // import requireAuth from "../../components/Auth/requireAuth";
 
+const { Item, Header } = List;
+
 // eslint-disable-next-line react/prop-types
 const Posts = ({ posts, error, fetchPosts }) => {
   useEffect(() => {
@@ -36,9 +38,9 @@ const Posts = ({ posts, error, fetchPosts }) => {
       {posts && posts.length !== 0 ? (
         <List>
           {posts.map((post) => (
-            <List.Item key={post.id}>
-              <List.Header>{post.title}</List.Header>The lovely luck
-            </List.Item>
+            <Item key={post.id}>
+              <Header>{post.title}</Header>The lovely luck
+            </Item>
           ))}
         </List>
       ) : (
