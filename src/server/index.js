@@ -7,7 +7,7 @@ import renderMiddleware from "./middleware/render";
 import Cookies from "cookies";
 
 const publicPath = path.join(__dirname, "/public");
-const app = express();
+const app = express.Router({ mergeParams: true });
 
 app.use(express.static(publicPath));
 app.use(Cookies.express());

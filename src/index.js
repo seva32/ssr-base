@@ -16,7 +16,7 @@ if (module.hot) {
 }
 
 express()
-  .use((req, res) => app.handle(req, res))
+  .use("*", app)
   .listen(process.env.PORT || 3000, () => {
     console.log(
       `React SSR App is running: http://localhost:${process.env.PORT || 3000}`
