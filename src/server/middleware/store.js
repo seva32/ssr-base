@@ -5,11 +5,14 @@ import {
   NodeCookiesWrapper,
 } from "redux-persist-cookie-storage";
 import Cookies from "cookies";
+import { matchRoutes } from "react-router-config";
 // import storage from "redux-persist/lib/storage";
 
 // import rootReducer from "../../client/reducers";
 import auth from "../../client/reducers/authReducer";
 import posts from "../../client/reducers/postsReducer";
+import photos from "../../client/reducers/photosReducer";
+import Routes from "../../client/Routes";
 
 const storeMiddleware = () => async (req, res, next) => {
   const cookieJar = new NodeCookiesWrapper(new Cookies(req, res));
@@ -39,13 +42,35 @@ const storeMiddleware = () => async (req, res, next) => {
   const rootReducer = combineReducers({
     auth: persistReducer(authPersistConfig, auth),
     posts,
+    photos,
   });
 
   const reducer = persistReducer(rootPersistConfig, rootReducer);
 
-  req.store = createStore(reducer, preloadedState);
-  res.removeHeader("Set-Cookie");
-  next();
+  const store = createStore(reducer, preloadedState);
+
+  const params = req.params[0].split("/");
+  const id = params[2];
+  const routes = matchRoutes(Routes, req.path);
+
+  const promises = routes
+    .map(({ route }) => {
+      return route.loadData ? route.loadData(store, id) : null;
+    })
+    .map((promise) => {
+      if (promise) {
+        return new Promise((resolve, _reject) => {
+          promise.then(resolve).catch(resolve);
+        });
+      }
+      return null;
+    });
+
+  Promise.all(promises).then(() => {
+    req.store = store;
+    res.removeHeader("Set-Cookie");
+    next();
+  });
 };
 
 export default storeMiddleware;

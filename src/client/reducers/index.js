@@ -6,6 +6,7 @@ import Cookies from "cookies-js";
 
 import posts from "./postsReducer";
 import auth from "./authReducer";
+import photos from "./photosReducer";
 
 const rootPersistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, auth),
   posts,
+  photos,
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);
