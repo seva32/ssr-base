@@ -6,8 +6,9 @@ import { Helmet } from "react-helmet";
 import { StaticRouter } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 import serialize from "serialize-javascript";
+import { renderRoutes } from "react-router-config";
 
-import App from "../../client/App.jsx";
+import Routes from "../../client/Routes";
 
 const renderMiddleware = () => (req, res) => {
   let html = req.html;
@@ -18,7 +19,7 @@ const renderMiddleware = () => (req, res) => {
     sheet.collectStyles(
       <ReduxProvider store={store}>
         <StaticRouter location={req.url} context={routerContext}>
-          <App />
+          <div>{renderRoutes(Routes)}</div>
         </StaticRouter>
       </ReduxProvider>
     )

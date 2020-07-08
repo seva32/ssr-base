@@ -1,4 +1,6 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import reduxThunk from "redux-thunk";
+import reduxPromise from "redux-promise";
 import { getStoredState, persistReducer } from "redux-persist";
 import {
   CookieStorage,
@@ -47,7 +49,9 @@ const storeMiddleware = () => async (req, res, next) => {
 
   const reducer = persistReducer(rootPersistConfig, rootReducer);
 
-  const store = createStore(reducer, preloadedState);
+  const enhancer = compose(applyMiddleware(reduxPromise, reduxThunk));
+
+  const store = createStore(reducer, preloadedState, enhancer);
 
   const params = req.params[0].split("/");
   const id = params[2];
