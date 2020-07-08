@@ -8,7 +8,10 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const [menuOpen, setMenuToggle] = useState(false);
 
-  const toggleMenu = () => setMenuToggle(!menuOpen);
+  const toggleMenu = () => {
+    setMenuToggle(!menuOpen);
+    return false;
+  };
 
   const stylesOpen = {
     transform: "translateX(0px)",
@@ -21,11 +24,7 @@ const Header = () => {
             <a href="/" className="brand-logo">
               Project Photos
             </a>
-            <a
-              href="javascript:void(0)"
-              onClick={toggleMenu}
-              className="sidenav-trigger right"
-            >
+            <a href="#" onClick={toggleMenu} className="sidenav-trigger right">
               <i className="material-icons">menu</i>
             </a>
             <div

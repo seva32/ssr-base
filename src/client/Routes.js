@@ -1,7 +1,7 @@
 import Home from "./domain/Home/Home";
 import NotFound from "./domain/Home/NotFound";
 import ArticleList from "./domain/Home/ArticleList";
-import App from "./App.jsx";
+import App from "./App.js";
 
 export default [
   {

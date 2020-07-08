@@ -15,6 +15,7 @@ const ArticleListPage = (props) => {
   const readPost = (post) => {
     setCurrentPost(post);
     setModal(true);
+    return false;
   };
 
   const closeModal = () => {
@@ -22,7 +23,7 @@ const ArticleListPage = (props) => {
   };
 
   const renderPosts = () => {
-    return props.posts.map((post) => (
+    return props.posts.list.map((post) => (
       <div className="col s12 m6 l6 xl4" key={post.title}>
         <div className="card large">
           <div className="card-image">
@@ -32,7 +33,7 @@ const ArticleListPage = (props) => {
             <span className="card-title">{post.title}</span>
           </div>
           <div className="card-action">
-            <a href="javascript:void(0)" onClick={() => readPost(post)}>
+            <a href="#" onClick={() => readPost(post)}>
               Read More
             </a>
           </div>
@@ -102,14 +103,14 @@ const loadData = (store, param) => {
 };
 
 ArticleListPage.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.any),
+  posts: PropTypes.object,
   location: PropTypes.objectOf(PropTypes.any),
   match: PropTypes.objectOf(PropTypes.any),
   fetchPosts: PropTypes.func,
 };
 
 ArticleListPage.defaultProps = {
-  posts: [],
+  posts: {},
   location: null,
   match: null,
   fetchPosts: null,

@@ -7,11 +7,6 @@
     "react-hooks",
     "import"
   ],
-  "ecmaFeatures": {
-    "modules": true,
-    "jsx": true,
-    "experimentalObjectRestSpread": true
-  },
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",

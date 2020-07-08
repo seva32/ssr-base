@@ -15,6 +15,7 @@ const HomePage = (props) => {
   const readPhoto = (photo) => {
     setCurrentPhoto(photo);
     setModal(true);
+    return false;
   };
 
   const closeModal = () => {
@@ -22,7 +23,7 @@ const HomePage = (props) => {
   };
 
   const renderPhotos = () => {
-    return props.photos.map((photo) => (
+    return props.photos.list.map((photo) => (
       <div className="col s12 m6 l6 xl4" key={photo.title}>
         <div className="card large">
           <div className="card-image">
@@ -32,7 +33,7 @@ const HomePage = (props) => {
             <span className="card-title">{photo.title}</span>
           </div>
           <div className="card-action">
-            <a href="javascript:void(0)" onClick={() => readPhoto(photo)}>
+            <a href="#" onClick={() => readPhoto(photo)}>
               Read More
             </a>
           </div>
@@ -94,12 +95,12 @@ const loadData = (store) => {
 };
 
 HomePage.propTypes = {
-  photos: PropTypes.arrayOf(PropTypes.any),
+  photos: PropTypes.object,
   fetchPhotos: PropTypes.func,
 };
 
 HomePage.defaultProps = {
-  Photos: [],
+  Photos: {},
   fetchPhotos: null,
 };
 
