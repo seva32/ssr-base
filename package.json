@@ -13,6 +13,7 @@
     "eslint-plugin-react-hooks": "^4.0.5",
     "eslint-plugin-sonarjs": "^0.5.0",
     "express": "^4.17.1",
+    "morgan": "^1.10.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -59,7 +60,8 @@
     "eject": "react-ssr-scripts eject",
     "analyze": "source-map-explorer 'build/public/static/js/*.js'",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "p": "rm -rf build && yarn build && node build"
   },
   "browserslist": {
     "production": [
