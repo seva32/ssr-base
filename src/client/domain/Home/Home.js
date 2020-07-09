@@ -71,7 +71,7 @@ const HomePage = (props) => {
       ) : null}
       <div className="row">
         <div className="section">
-          <h3>Popular Photos</h3>
+          <h3>Home page list</h3>
         </div>
         <div className="divider" />
         <div className="section">

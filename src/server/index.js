@@ -7,21 +7,18 @@ import storeMiddleware from "./middleware/store";
 import renderMiddleware from "./middleware/render";
 import logger from "./middleware/logger";
 
-const publicPath = path.join(__dirname, "/public");
-const app = express.Router({ mergeParams: true });
-const options = { extensions: false };
+const publicPath = path.join(__dirname, "public");
+// const app = express.Router({ mergeParams: true });
+const options = { extensions: false, index: false, redirect: false };
 
-<<<<<<< HEAD
-app.use(express.static(publicPath, options));
-app.use("/static/css", express.static(publicPath, options));
-app.use("/static/js", express.static(publicPath, options));
-=======
-app.use(logger);
-app.use(express.static(publicPath));
->>>>>>> master
-app.use(Cookies.express());
-app.use(htmlMiddleware());
-app.use(storeMiddleware());
-app.use(renderMiddleware());
+export default (app) => {
+  app.use(Cookies.express());
+  app.use(logger);
+  app.use("/", express.static(publicPath, options));
+  // app.use("/static", express.static(publicPath));
+  // app.use("/static/js", express.static(publicPath));
 
-export default app;
+  app.use(htmlMiddleware());
+  app.use(storeMiddleware());
+  app.use(renderMiddleware());
+};

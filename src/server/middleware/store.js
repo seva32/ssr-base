@@ -53,8 +53,9 @@ const storeMiddleware = () => async (req, res, next) => {
 
   const store = createStore(reducer, preloadedState, enhancer);
 
-  const params = req.params[0].split("/");
-  const id = params[2];
+  // const params = req.params[0].split("/");
+  // const id = params[2];
+  const id = 1;
   const routes = matchRoutes(Routes, req.path);
 
   const promises = routes
