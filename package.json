@@ -59,7 +59,8 @@
     "eject": "react-ssr-scripts eject",
     "analyze": "source-map-explorer 'build/public/static/js/*.js'",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "p": "rm -rf build && yarn build && node build"
   },
   "browserslist": {
     "production": [
