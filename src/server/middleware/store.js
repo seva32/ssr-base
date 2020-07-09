@@ -8,9 +8,7 @@ import {
 } from "redux-persist-cookie-storage";
 import Cookies from "cookies";
 import { matchRoutes } from "react-router-config";
-// import storage from "redux-persist/lib/storage";
 
-// import rootReducer from "../../client/reducers";
 import auth from "../../client/reducers/authReducer";
 import posts from "../../client/reducers/postsReducer";
 import photos from "../../client/reducers/photosReducer";
