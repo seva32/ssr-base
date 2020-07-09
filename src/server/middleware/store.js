@@ -8,9 +8,7 @@ import {
 } from "redux-persist-cookie-storage";
 import Cookies from "cookies";
 import { matchRoutes } from "react-router-config";
-// import storage from "redux-persist/lib/storage";
 
-// import rootReducer from "../../client/reducers";
 import auth from "../../client/reducers/authReducer";
 import posts from "../../client/reducers/postsReducer";
 import photos from "../../client/reducers/photosReducer";
@@ -53,9 +51,8 @@ const storeMiddleware = () => async (req, res, next) => {
 
   const store = createStore(reducer, preloadedState, enhancer);
 
-  // const params = req.params[0].split("/");
-  // const id = params[2];
-  const id = 1;
+  const params = req.params[0].split("/");
+  const id = params[2];
   const routes = matchRoutes(Routes, req.path);
 
   const promises = routes

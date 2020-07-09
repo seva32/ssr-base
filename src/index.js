@@ -16,7 +16,6 @@ if (module.hot) {
 }
 
 const server = express();
-
 app(server);
 server.listen(process.env.PORT || 3000, () => {
   console.log(

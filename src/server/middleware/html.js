@@ -7,11 +7,9 @@ const htmlMiddleware = () => (req, res, next) => {
   fs.readFile(`${publicPath}/app.html`, "utf8", (err, html) => {
     if (!err) {
       req.html = html;
-      // eslint-disable-next-line callback-return
-      next();
-    } else {
-      res.status(500).send("Error parsing app.html");
+      return next();
     }
+    res.status(500).send("Error parsing app.html");
   });
 };
 
