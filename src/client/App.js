@@ -1,11 +1,11 @@
 import React from "react";
-import { renderRoutes } from "react-router-config";
+import {renderRoutes} from "react-router-config";
 import PropTypes from "prop-types";
 import ErrorBoundary from "./components/ErrorBoundry";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const App = ({ route }) => {
+const App = ({route}) => {
   return (
     <div>
       <Header />

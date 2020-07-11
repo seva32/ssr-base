@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React from "react";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
-import TaskList from './TaskList';
+import TaskList from "./TaskList";
 
-export function PureInboxScreen({ error }) {
+export function PureInboxScreen({error}) {
   if (error) {
     return (
       <div className="page lists-show">
@@ -37,4 +37,4 @@ PureInboxScreen.defaultProps = {
   error: null,
 };
 
-export default connect(({ error }) => ({ error }))(PureInboxScreen);
+export default connect(({error}) => ({error}))(PureInboxScreen);

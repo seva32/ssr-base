@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Task from "./Task";
-import { connect } from "react-redux";
-import { archiveTask, pinTask } from "../lib/redux";
+import {connect} from "react-redux";
+import {archiveTask, pinTask} from "../lib/redux";
 
-export function PureTaskList({ loading, tasks, onPinTask, onArchiveTask }) {
+export function PureTaskList({loading, tasks, onPinTask, onArchiveTask}) {
   const events = {
     onPinTask,
     onArchiveTask,
@@ -46,13 +46,13 @@ export function PureTaskList({ loading, tasks, onPinTask, onArchiveTask }) {
   }
 
   const tasksInOrder = [
-    ...tasks.filter((t) => t.state === "TASK_PINNED"),
-    ...tasks.filter((t) => t.state !== "TASK_PINNED"),
+    ...tasks.filter(t => t.state === "TASK_PINNED"),
+    ...tasks.filter(t => t.state !== "TASK_PINNED"),
   ];
 
   return (
     <div className="list-items">
-      {tasksInOrder.map((task) => (
+      {tasksInOrder.map(task => (
         <Task key={task.id} task={task} {...events} />
       ))}
     </div>
@@ -71,13 +71,13 @@ PureTaskList.defaultProps = {
 };
 
 export default connect(
-  ({ tasks }) => ({
+  ({tasks}) => ({
     tasks: tasks.filter(
-      (t) => t.state === "TASK_INBOX" || t.state === "TASK_PINNED"
+      t => t.state === "TASK_INBOX" || t.state === "TASK_PINNED",
     ),
   }),
-  (dispatch) => ({
-    onArchiveTask: (id) => dispatch(archiveTask(id)),
-    onPinTask: (id) => dispatch(pinTask(id)),
-  })
+  dispatch => ({
+    onArchiveTask: id => dispatch(archiveTask(id)),
+    onPinTask: id => dispatch(pinTask(id)),
+  }),
 )(PureTaskList);

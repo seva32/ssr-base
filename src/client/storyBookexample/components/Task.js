@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function Task({
-  task: { id, title, state },
+  task: {id, title, state},
   onArchiveTask,
   onPinTask,
 }) {
@@ -23,11 +23,11 @@ export default function Task({
           value={title}
           readOnly={true}
           placeholder="Input title"
-          style={{ textOverflow: "ellipsis" }}
+          style={{textOverflow: "ellipsis"}}
         />
       </div>
 
-      <div className="actions" onClick={(event) => event.stopPropagation()}>
+      <div className="actions" onClick={event => event.stopPropagation()}>
         {state !== "TASK_ARCHIVED" && (
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <a onClick={() => onPinTask(id)}>

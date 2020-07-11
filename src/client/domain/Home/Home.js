@@ -1,18 +1,18 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { Helmet } from "react-helmet";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import React, {useEffect, useState} from "react";
+import {connect} from "react-redux";
+import {Helmet} from "react-helmet";
+import {LazyLoadImage} from "react-lazy-load-image-component";
 import PropTypes from "prop-types"; // ES6
-import { fetchPhotos } from "../../actions/photos/photosActions";
+import {fetchPhotos} from "../../actions/photos/photosActions";
 import ArticleDetailModal from "../../components/ArticleDetailModal";
 
-const HomePage = (props) => {
+const HomePage = props => {
   const [modal, setModal] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState({});
 
-  const readPhoto = (photo) => {
+  const readPhoto = photo => {
     setCurrentPhoto(photo);
     setModal(true);
     return false;
@@ -23,7 +23,7 @@ const HomePage = (props) => {
   };
 
   const renderPhotos = () => {
-    return props.photos.list.map((photo) => (
+    return props.photos.list.map(photo => (
       <div className="col s12 m6 l6 xl4" key={photo.title}>
         <div className="card large">
           <div className="card-image">
@@ -57,7 +57,7 @@ const HomePage = (props) => {
     );
   };
 
-  const { fetchPhotos: loadPhotos } = props;
+  const {fetchPhotos: loadPhotos} = props;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -82,13 +82,13 @@ const HomePage = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     photos: state.photos,
   };
 };
 
-const loadData = (store) => {
+const loadData = store => {
   // For the connect tag we need Provider component but on the server at this moment app is not rendered yet
   // So we need to use store itself to load data
   return store.dispatch(fetchPhotos()); // Manually dispatch a network request
@@ -105,6 +105,6 @@ HomePage.defaultProps = {
 };
 
 export default {
-  component: connect(mapStateToProps, { fetchPhotos })(HomePage),
+  component: connect(mapStateToProps, {fetchPhotos})(HomePage),
   loadData,
 };
