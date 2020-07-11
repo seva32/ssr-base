@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const NotFoundPage = ({ staticContext = {} }) => {
+const NotFoundPage = ({staticContext = {}}) => {
   staticContext.notFound = true;
   return (
     <div className="ui container">
@@ -12,13 +12,13 @@ const NotFoundPage = ({ staticContext = {} }) => {
 };
 
 NotFoundPage.propTypes = {
-  staticContext: PropTypes.objectOf(PropTypes.any)
+  staticContext: PropTypes.objectOf(PropTypes.any),
 };
 
 NotFoundPage.defaultProps = {
-  staticContext: {}
+  staticContext: {},
 };
 
 export default {
-  component: NotFoundPage
+  component: NotFoundPage,
 };

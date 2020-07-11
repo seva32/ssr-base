@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ArticleDetailModal = (props) => {
-  const { handler, data } = props;
+const ArticleDetailModal = props => {
+  const {handler, data} = props;
   return (
     <>
       <div
@@ -49,7 +49,7 @@ const ArticleDetailModal = (props) => {
         role="presentation"
         onClick={handler}
         className="modal-overlay"
-        style={{ zIndex: 1002, display: "block", opacity: 0.5 }}
+        style={{zIndex: 1002, display: "block", opacity: 0.5}}
       />
     </>
   );

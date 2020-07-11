@@ -61,7 +61,8 @@
     "analyze": "source-map-explorer 'build/public/static/js/*.js'",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "p": "rm -rf build && yarn build && node build"
+    "p": "rm -rf build && yarn build && node build",
+    "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\""
   },
   "browserslist": {
     "production": [
@@ -84,6 +85,7 @@
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
     "babel-loader": "^8.0.6",
+    "prettier": "^2.0.5",
     "react-test-renderer": "^16.13.1"
   },
   "resolutions": {

@@ -1,12 +1,6 @@
 {
-  "extends": [
-    "react-app",
-    "problems"
-  ],
-  "plugins": [
-    "react-hooks",
-    "import"
-  ],
+  "extends": ["react-app", "problems"],
+  "plugins": ["react-hooks", "import"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",

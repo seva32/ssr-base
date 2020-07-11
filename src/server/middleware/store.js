@@ -1,13 +1,10 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 import reduxThunk from "redux-thunk";
 import reduxPromise from "redux-promise";
-import { getStoredState, persistReducer } from "redux-persist";
-import {
-  CookieStorage,
-  NodeCookiesWrapper,
-} from "redux-persist-cookie-storage";
+import {getStoredState, persistReducer} from "redux-persist";
+import {CookieStorage, NodeCookiesWrapper} from "redux-persist-cookie-storage";
 import Cookies from "cookies";
-import { matchRoutes } from "react-router-config";
+import {matchRoutes} from "react-router-config";
 
 import auth from "../../client/reducers/authReducer";
 import posts from "../../client/reducers/postsReducer";
@@ -56,10 +53,10 @@ const storeMiddleware = () => async (req, res, next) => {
   const routes = matchRoutes(Routes, req.path);
 
   const promises = routes
-    .map(({ route }) => {
+    .map(({route}) => {
       return route.loadData ? route.loadData(store, id) : null;
     })
-    .map((promise) => {
+    .map(promise => {
       if (promise) {
         return new Promise((resolve, _reject) => {
           promise.then(resolve).catch(resolve);

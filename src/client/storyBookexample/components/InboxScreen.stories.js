@@ -1,9 +1,9 @@
 import React from "react";
-import { action } from "@storybook/addon-actions";
-import { Provider } from "react-redux";
+import {action} from "@storybook/addon-actions";
+import {Provider} from "react-redux";
 
-import { PureInboxScreen } from "./InboxScreen";
-import { defaultTasksData } from "./TaskList.stories";
+import {PureInboxScreen} from "./InboxScreen";
+import {defaultTasksData} from "./TaskList.stories";
 
 // A super-simple mock of a redux store
 const store = {
@@ -19,8 +19,8 @@ const store = {
 export default {
   component: PureInboxScreen,
   title: "InboxScreen",
-  parameters: { assets: ["designs/app.png"] },
-  decorators: [(story) => <Provider store={store}>{story()}</Provider>],
+  parameters: {assets: ["designs/app.png"]},
+  decorators: [story => <Provider store={store}>{story()}</Provider>],
 };
 
 export const Default = () => <PureInboxScreen />;

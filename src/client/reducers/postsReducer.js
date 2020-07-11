@@ -11,9 +11,9 @@ const initialState = {
 function postsReducer(state = initialState, action) {
   switch (action.type) {
     case POSTS_FETCH:
-      return { ...state, list: action.payload };
+      return {...state, list: action.payload};
     case POSTS_FETCH_ERROR:
-      return { ...state, error: action.payload };
+      return {...state, error: action.payload};
     default:
       return state;
   }
