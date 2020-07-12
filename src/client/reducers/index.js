@@ -1,12 +1,12 @@
-import {combineReducers} from "redux";
-import {persistReducer} from "redux-persist";
+import { combineReducers } from "redux";
+import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import {CookieStorage} from "redux-persist-cookie-storage";
+import { CookieStorage } from "redux-persist-cookie-storage";
 import Cookies from "cookies-js";
 
 import posts from "./postsReducer";
 import auth from "./authReducer";
-import photos from "./photosReducer";
+// import photos from "./photosReducer";
 
 const rootPersistConfig = {
   key: "root",
@@ -23,7 +23,7 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, auth),
   posts,
-  photos,
+  // photos,
 });
 
 export default persistReducer(rootPersistConfig, rootReducer);

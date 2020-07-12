@@ -19,12 +19,12 @@ const Posts = ({ posts, error, fetchPosts }) => {
   return (
     <Layout>
       <Helmet>
-        <title>{`${posts.length !== 0 ? posts.length : ""} P`}</title>
+        <title>{`${posts.length || ""} P`}</title>
         <meta property="og:title" content="Articles List" />
         <meta
           name="description"
           content={`Latest ${
-            posts.length !== 0 ? posts.length : ""
+            posts.length || ""
           } articles, popular articles from most popular news websites of the world`}
         />
         <meta name="robots" content="index, follow" />

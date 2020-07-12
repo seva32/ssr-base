@@ -1,19 +1,14 @@
 import React from "react";
-import {renderRoutes} from "react-router-config";
+import { renderRoutes } from "react-router-config";
 import PropTypes from "prop-types";
-import ErrorBoundary from "./components/News/ErrorBoundry";
-import Header from "./components/News/Header";
-import Footer from "./components/News/Footer";
+import { ErrorBoundary } from "./components";
+import { Layout } from "./domain";
 
-const App = ({route}) => {
+const App = ({ route }) => {
   return (
-    <div>
-      <Header />
-      <div className="container">
-        <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
-      </div>
-      <Footer />
-    </div>
+    <Layout>
+      <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
+    </Layout>
   );
 };
 
