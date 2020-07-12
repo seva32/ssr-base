@@ -16,7 +16,7 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { omit } from "lodash";
 import PropTypes from "prop-types";
-import imagePath from "../../assets/images/logo192.png";
+import imagePath from "../../assets/img/logo192.png";
 import { Layout } from "../Layout";
 import { GoogleLogin } from "../../components/GoogleButton";
 import * as actions from "../../actions";
@@ -25,9 +25,10 @@ const SignupFormUI = ({ error, signup, history }) => {
   // eslint-disable-next-line no-unused-vars
   const [showButton, toggleShow] = useState(true);
 
-  const renderGoogleAuth = () => ((showButton || error) && (
-  <GoogleLogin
-    onSuccess={(res) => {
+  const renderGoogleAuth = () =>
+    ((showButton || error) && (
+      <GoogleLogin
+        onSuccess={res => {
           if (res.Qt.Au && res.googleId) {
             toggleShow(false);
             signup(
@@ -37,26 +38,26 @@ const SignupFormUI = ({ error, signup, history }) => {
               },
               () => {
                 history.push("/");
-              }
+              },
             );
           }
         }}
-    onFailure={(_res) => (
-      <Message negative>
-        <Message.Header>
-          There was a problem trying to signup with Google
-        </Message.Header>
-        <p>Try again or use another method</p>
-      </Message>
+        onFailure={_res => (
+          <Message negative>
+            <Message.Header>
+              There was a problem trying to signup with Google
+            </Message.Header>
+            <p>Try again or use another method</p>
+          </Message>
         )}
         // use REACT_APP_GOOGLE_ID
         // eslint-disable-next-line max-len
-    clientId="337014600692-84c6cvbn4370f08b6cdp8jkc2ndjln84.apps.googleusercontent.com"
-  >
-    Singup
-  </GoogleLogin>
-    ))
-    || null;
+        clientId="337014600692-84c6cvbn4370f08b6cdp8jkc2ndjln84.apps.googleusercontent.com"
+      >
+        Singup
+      </GoogleLogin>
+    )) ||
+    null;
   const formik = useFormik({
     initialValues: {
       password: "",
@@ -71,10 +72,10 @@ const SignupFormUI = ({ error, signup, history }) => {
         .min(2, "Password is too short - should be 8 chars minimum.")
         .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
       repeatpassword: Yup.string().when("password", {
-        is: (val) => val && val.length > 0,
+        is: val => val && val.length > 0,
         then: Yup.string().oneOf(
           [Yup.ref("password")],
-          "Both password need to be the same"
+          "Both password need to be the same",
         ),
       }),
     }),
@@ -200,5 +201,5 @@ export default connect(
   ({ auth }) => ({
     error: auth.errorMessageSignUp,
   }),
-  actions
+  actions,
 )(SignupFormUI);

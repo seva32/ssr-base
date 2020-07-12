@@ -5,10 +5,9 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { List } from "semantic-ui-react";
 // import * as Styles from "./Posts.style";
-import { Loader } from "../../components";
+import { Loader, authHOC } from "../../components";
 import { Layout } from "../Layout";
 import * as actions from "../../actions";
-import requireAuth from "../../components/Auth/requireAuth";
 
 // eslint-disable-next-line react/prop-types
 const Posts = ({ posts, error, fetchPosts }) => {
@@ -34,7 +33,7 @@ const Posts = ({ posts, error, fetchPosts }) => {
       <h1>Post Page</h1>
       {posts && posts.length !== 0 ? (
         <List>
-          {posts.map((post) => (
+          {posts.map(post => (
             <List.Item key={post.id}>
               <List.Header>{post.title}</List.Header>The lovely luck
             </List.Item>
@@ -63,6 +62,6 @@ Posts.defaultProps = {
 export default compose(
   connect(
     ({ posts }) => ({ posts: posts.list, error: posts.error }),
-    actions
-  )(requireAuth(Posts))
+    actions,
+  )(authHOC(Posts)),
 );

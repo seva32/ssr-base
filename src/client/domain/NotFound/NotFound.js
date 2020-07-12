@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import Status from "../../components/Status/Status";
-import imgPath from "../../assets/images/notfound.png";
+import { Status } from "../../components";
+import imgPath from "../../assets/img/notfound.png";
 import * as Styles from "./NotFound.style";
 import { Layout } from "../Layout";
 

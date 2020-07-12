@@ -16,7 +16,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import imagePath from "../../assets/images/logo192.png";
+import imagePath from "../../assets/img/logo192.png";
 import { Layout } from "../Layout";
 import { GoogleLogin } from "../../components/GoogleButton";
 import * as actions from "../../actions";
@@ -26,9 +26,10 @@ const SigninFormUI = ({ error, signin, history }) => {
   const [showButton, toggleShow] = useState(true);
 
   // eslint-disable-next-line max-len
-  const renderGoogleAuth = () => ((showButton || error) && (
-  <GoogleLogin
-    onSuccess={(res) => {
+  const renderGoogleAuth = () =>
+    ((showButton || error) && (
+      <GoogleLogin
+        onSuccess={res => {
           if (res.Qt.Au && res.googleId) {
             toggleShow(false);
             signin(
@@ -38,26 +39,26 @@ const SigninFormUI = ({ error, signin, history }) => {
               },
               () => {
                 history.push("/");
-              }
+              },
             );
           }
         }}
-    onFailure={(_res) => (
-      <Message negative>
-        <Message.Header>
-          There was a problem trying to signin with Google
-        </Message.Header>
-        <p>Try again or use another method</p>
-      </Message>
+        onFailure={_res => (
+          <Message negative>
+            <Message.Header>
+              There was a problem trying to signin with Google
+            </Message.Header>
+            <p>Try again or use another method</p>
+          </Message>
         )}
         // use REACT_APP_GOOGLE_ID=
         // eslint-disable-next-line max-len
-    clientId="337014600692-84c6cvbn4370f08b6cdp8jkc2ndjln84.apps.googleusercontent.com"
-  >
-    Signin
-  </GoogleLogin>
-    ))
-    || null;
+        clientId="337014600692-84c6cvbn4370f08b6cdp8jkc2ndjln84.apps.googleusercontent.com"
+      >
+        Signin
+      </GoogleLogin>
+    )) ||
+    null;
 
   const formik = useFormik({
     initialValues: {
@@ -182,5 +183,5 @@ export default connect(
   ({ auth }) => ({
     error: auth.errorMessageSignIn,
   }),
-  actions
+  actions,
 )(SigninFormUI);

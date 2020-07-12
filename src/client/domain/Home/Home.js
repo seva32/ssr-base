@@ -4,8 +4,7 @@ import React from "react";
 import styles from "./home.scss";
 
 import { Layout } from "../Layout";
-import { FormUI } from "../../components";
-import Head from "../../components/Head";
+import { FormUI, Head } from "../../components";
 import * as Styles from "./Home.style";
 
 // eslint-disable-next-line react/prop-types

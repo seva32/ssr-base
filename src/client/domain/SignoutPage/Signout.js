@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import RedirectWithStatus from "../../components/RedirectWithStatus/RedirectWithStatus";
+import { RedirectWithStatus } from "../../components";
 import * as actions from "../../actions";
 
 function Signout({ signout }) {
