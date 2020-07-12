@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const NotFoundPage = ({staticContext = {}}) => {
+const NotFoundPage = ({ staticContext = {} }) => {
   staticContext.notFound = true;
   return (
     <div className="ui container">

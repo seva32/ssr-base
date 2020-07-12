@@ -37,7 +37,7 @@ const GoogleLogin = props => {
     accessType,
     responseType,
     jsSrc,
-    prompt
+    prompt,
   } = props;
 
   const { signIn, loaded } = useGoogleLogin({
@@ -59,7 +59,7 @@ const GoogleLogin = props => {
     accessType,
     responseType,
     jsSrc,
-    prompt
+    prompt,
   });
   const disabled = disabledProp || !loaded;
 
@@ -78,19 +78,19 @@ const GoogleLogin = props => {
     border: "1px solid transparent",
     fontSize: 14,
     fontWeight: "500",
-    fontFamily: "Roboto, sans-serif"
+    fontFamily: "Roboto, sans-serif",
   };
 
   const hoveredStyle = {
     cursor: "pointer",
-    opacity: 0.9
+    opacity: 0.9,
   };
 
   const activeStyle = {
     cursor: "pointer",
     backgroundColor: theme === "dark" ? "#3367D6" : "#eee",
     color: theme === "dark" ? "#fff" : "rgba(0, 0, 0, .54)",
-    opacity: 1
+    opacity: 1,
   };
 
   const defaultStyle = (() => {
@@ -126,14 +126,14 @@ const GoogleLogin = props => {
       style: defaultStyle,
       type,
       disabled,
-      className
+      className,
     },
     [
       icon && <Icon key={1} active={active} />,
       <ButtonContent icon={icon} key={2}>
         {children || buttonText}
-      </ButtonContent>
-    ]
+      </ButtonContent>,
+    ],
   );
 
   return googleLoginButton;
@@ -167,7 +167,7 @@ GoogleLogin.propTypes = {
   accessType: PropTypes.string,
   render: PropTypes.func,
   theme: PropTypes.string,
-  icon: PropTypes.bool
+  icon: PropTypes.bool,
 };
 
 GoogleLogin.defaultProps = {
@@ -182,11 +182,11 @@ GoogleLogin.defaultProps = {
   isSignedIn: false,
   uxMode: "popup",
   disabledStyle: {
-    opacity: 0.6
+    opacity: 0.6,
   },
   icon: true,
   theme: "light",
-  onRequest: () => {}
+  onRequest: () => {},
 };
 
 export default GoogleLogin;

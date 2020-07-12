@@ -60,6 +60,6 @@ const localLogin = new LocalStrategy(
         return done(null, user);
       });
     });
-  }
+  },
 );
 passport.use(localLogin);

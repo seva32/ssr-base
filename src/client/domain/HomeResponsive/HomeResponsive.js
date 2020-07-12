@@ -38,7 +38,7 @@ const ResponsiveContainer = ({ children, getWidth }) => (
   </>
 );
 
-const getWidthFactory = (isMobileFromSSR) => () => {
+const getWidthFactory = isMobileFromSSR => () => {
   const isSSR = typeof window === "undefined";
   const ssrValue = isMobileFromSSR
     ? Responsive.onlyMobile.maxWidth

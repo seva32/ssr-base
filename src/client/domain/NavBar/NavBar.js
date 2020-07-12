@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Icon,
@@ -13,6 +13,7 @@ import MobileDetect from "mobile-detect";
 import map from "lodash/map";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 const NavBarMobile = ({
   children,
@@ -31,7 +32,7 @@ const NavBarMobile = ({
       vertical
       visible={visible}
     >
-      {map(leftItems, (item) => (
+      {map(leftItems, item => (
         <Menu.Item as={NavLink} exact {...item} />
       ))}
     </Sidebar>
@@ -48,7 +49,7 @@ const NavBarMobile = ({
           <Icon name="sidebar" />
         </Menu.Item>
         <Menu.Menu position="right">
-          {map(rightItems, (item) => (
+          {map(rightItems, item => (
             <Menu.Item as={NavLink} exact {...item} />
           ))}
         </Menu.Menu>
@@ -68,14 +69,14 @@ NavBarMobile.propTypes = {
       as: PropTypes.string,
       content: PropTypes.string,
       key: PropTypes.string,
-    })
+    }),
   ),
   rightItems: PropTypes.arrayOf(
     PropTypes.shape({
       as: PropTypes.string,
       content: PropTypes.string,
       key: PropTypes.string,
-    })
+    }),
   ),
   visible: PropTypes.bool,
   onPusherClick: PropTypes.func,
@@ -87,11 +88,11 @@ const NavBarDesktop = ({ leftItems, rightItems }) => (
     <Menu.Item>
       <Image size="mini" src="https://react.semantic-ui.com/logo.png" />
     </Menu.Item>
-    {map(leftItems, (item) => (
+    {map(leftItems, item => (
       <Menu.Item as={NavLink} exact {...item} />
     ))}
     <Menu.Menu position="right">
-      {map(rightItems, (item) => (
+      {map(rightItems, item => (
         <Menu.Item as={NavLink} exact {...item} />
       ))}
     </Menu.Menu>
@@ -104,14 +105,14 @@ NavBarDesktop.propTypes = {
       as: PropTypes.string,
       content: PropTypes.string,
       key: PropTypes.string,
-    })
+    }),
   ),
   rightItems: PropTypes.arrayOf(
     PropTypes.shape({
       as: PropTypes.string,
       content: PropTypes.string,
       key: PropTypes.string,
-    })
+    }),
   ),
 };
 
@@ -126,7 +127,7 @@ NavBarChildren.propTypes = {
   ]).isRequired,
 };
 
-// const getWidthFactory = (isMobileFromSSR) => () => {
+// const getWidthFactory = isMobileFromSSR => () => {
 //   const isSSR = typeof window === "undefined";
 //   const ssrValue = isMobileFromSSR
 //     ? Responsive.onlyMobile.maxWidth
@@ -135,15 +136,29 @@ NavBarChildren.propTypes = {
 //   return isSSR ? ssrValue : window.innerWidth;
 // };
 
-const getWidthFactory = (isMobileFromSSR) => () => {
+function getWidthFactory(isMobileFromSSR) {
   const isSSR = typeof window === "undefined";
   const ssrValue = isMobileFromSSR ? 767 : 768;
 
   return isSSR ? ssrValue : window.innerWidth;
-};
+}
 
-const NavBar = ({ children, leftItems, rightItems, getWidth }) => {
+const NavBar = ({ children, leftItems, rightItems }) => {
   const [visible, setVisible] = useState(false);
+  const [width, setWidth] = useState({ getWidth() {} });
+
+  useEffect(() => {
+    function getInitialProps(res) {
+      const result = new MobileDetect(res.headers["user-agent"]);
+      const isMobile = !!result.mobile();
+      console.log("*************", isMobile); // eslint-disable-line
+      return getWidthFactory(isMobile);
+    }
+
+    axios.get("/mobile").then(res => {
+      setWidth(getInitialProps(res));
+    });
+  }, []);
 
   const handlePusher = () => {
     if (visible) {
@@ -157,7 +172,7 @@ const NavBar = ({ children, leftItems, rightItems, getWidth }) => {
     <Container>
       <Responsive
         fireOnMount
-        getWidth={getWidth}
+        getWidth={() => width}
         maxWidth={Responsive.onlyMobile.maxWidth}
       >
         <NavBarMobile
@@ -172,7 +187,7 @@ const NavBar = ({ children, leftItems, rightItems, getWidth }) => {
       </Responsive>
       <Responsive
         fireOnMount
-        getWidth={getWidth}
+        getWidth={() => width}
         minWidth={Responsive.onlyTablet.minWidth}
       >
         <NavBarDesktop leftItems={leftItems} rightItems={rightItems} />
@@ -192,23 +207,15 @@ NavBar.propTypes = {
       as: PropTypes.string,
       content: PropTypes.string,
       key: PropTypes.string,
-    })
+    }),
   ),
   rightItems: PropTypes.arrayOf(
     PropTypes.shape({
       as: PropTypes.string,
       content: PropTypes.string,
       key: PropTypes.string,
-    })
+    }),
   ),
-  getWidth: PropTypes.func.isRequired,
-};
-
-NavBar.getInitialProps = async ({ req }) => {
-  const result = new MobileDetect(req.headers["user-agent"]);
-  const isMobile = !!result.mobile();
-
-  return { getWidth: getWidthFactory(isMobile) };
 };
 
 export default NavBar;

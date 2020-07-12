@@ -4,7 +4,17 @@ import PropTypes from "prop-types";
 
 const ButtonContent = ({ children, icon }) => (
   // eslint-disable-next-line max-len
-  <span style={{ paddingRight: 10, fontWeight: 500, paddingLeft: icon ? 0 : 10, paddingTop: 10, paddingBottom: 10 }}>{children}</span>
+  <span
+    style={{
+      paddingRight: 10,
+      fontWeight: 500,
+      paddingLeft: icon ? 0 : 10,
+      paddingTop: 10,
+      paddingBottom: 10,
+    }}
+  >
+    {children}
+  </span>
 );
 
 ButtonContent.propTypes = {

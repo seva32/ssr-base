@@ -5,7 +5,7 @@ import { Route, Redirect } from "react-router-dom";
 
 const RedirectWithStatus = ({ status, from, to }) => (
   <Route
-    render={(props) => {
+    render={props => {
       const { staticContext } = props;
       if (staticContext) {
         staticContext.status = status; // eslint-disable-line no-param-reassign

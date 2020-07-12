@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {error: null, errorInfo: null};
+    this.state = { error: null, errorInfo: null };
   }
 
   componentDidCatch(error, errorInfo) {
@@ -17,15 +17,15 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
-    const {state} = this;
-    const {children} = this.props;
+    const { state } = this;
+    const { children } = this.props;
 
     if (state.errorInfo) {
       // Error path
       return (
         <>
           <h2>Something went wrong.</h2>
-          <details style={{whiteSpace: "pre-wrap"}}>
+          <details style={{ whiteSpace: "pre-wrap" }}>
             {state.error && state.error.toString()}
             <br />
             {state.errorInfo.componentStack}

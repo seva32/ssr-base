@@ -11,9 +11,9 @@ const initialState = {
 function photosReducer(state = initialState, action) {
   switch (action.type) {
     case PHOTOS_FETCH:
-      return {...state, list: action.payload};
+      return { ...state, list: action.payload };
     case PHOTOS_FETCH_ERROR:
-      return {...state, error: action.payload};
+      return { ...state, error: action.payload };
     default:
       return state;
   }

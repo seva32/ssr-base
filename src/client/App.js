@@ -2,11 +2,12 @@ import React from "react";
 import { renderRoutes } from "react-router-config";
 import PropTypes from "prop-types";
 import { ErrorBoundary } from "./components";
-import { Layout } from "./domain";
+import { Layout, CookieBanner } from "./domain";
 
 const App = ({ route }) => {
   return (
     <Layout>
+      <CookieBanner />
       <ErrorBoundary>{renderRoutes(route.routes)}</ErrorBoundary>
     </Layout>
   );

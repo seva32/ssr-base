@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Container } from "semantic-ui-react";
 import { NavBar } from "../NavBar";
-import CookieConsent from "../Cookies";
+import CookieConsent from "../CookieBanner";
 
 // eslint-disable-next-line react/prop-types
 function Layout({ children, auth }) {

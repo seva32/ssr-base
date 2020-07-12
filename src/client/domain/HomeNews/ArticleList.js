@@ -1,12 +1,12 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useEffect, useState} from "react";
-import {connect} from "react-redux";
-import {Helmet} from "react-helmet";
-import {LazyLoadImage} from "react-lazy-load-image-component";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import PropTypes from "prop-types";
 import ArticleDetailModal from "../../components/ArticleDetailModal";
-import {fetchPosts} from "../../actions/posts/postsActions";
+import { fetchPosts } from "../../actions/posts/postsActions";
 
 const ArticleListPage = props => {
   const [modal, setModal] = useState(false);
@@ -42,7 +42,7 @@ const ArticleListPage = props => {
     ));
   };
 
-  const {posts, location, match} = props;
+  const { posts, location, match } = props;
 
   const category = props && posts[0] && posts[0].title;
 
@@ -61,7 +61,7 @@ const ArticleListPage = props => {
     );
   };
 
-  const {fetchPosts: loadPosts} = props;
+  const { fetchPosts: loadPosts } = props;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -117,6 +117,6 @@ ArticleListPage.defaultProps = {
 };
 
 export default {
-  component: connect(mapStateToProps, {fetchPosts})(ArticleListPage),
+  component: connect(mapStateToProps, { fetchPosts })(ArticleListPage),
   loadData,
 };

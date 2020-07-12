@@ -1,7 +1,7 @@
 import React from "react";
-import {action} from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions";
 // eslint-disable-next-line import/no-unresolved
-import {withKnobs, object} from "@storybook/addon-knobs/react";
+import { withKnobs, object } from "@storybook/addon-knobs/react";
 
 import Task from "./Task";
 
@@ -9,7 +9,7 @@ export default {
   component: Task,
   title: "Task",
   decorators: [withKnobs],
-  parameters: {assets: ["designs/items.png"]},
+  parameters: { assets: ["designs/items.png"] },
   // Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
 };
@@ -27,12 +27,12 @@ export const actionsData = {
 };
 
 export const Default = () => {
-  return <Task task={object("task", {...taskData})} {...actionsData} />;
+  return <Task task={object("task", { ...taskData })} {...actionsData} />;
 };
 export const Pinned = () => (
-  <Task task={{...taskData, state: "TASK_PINNED"}} {...actionsData} />
+  <Task task={{ ...taskData, state: "TASK_PINNED" }} {...actionsData} />
 );
 
 export const Archived = () => (
-  <Task task={{...taskData, state: "TASK_ARCHIVED"}} {...actionsData} />
+  <Task task={{ ...taskData, state: "TASK_ARCHIVED" }} {...actionsData} />
 );

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {WithPinnedTasks} from "./TaskList.stories";
+import { WithPinnedTasks } from "./TaskList.stories";
 
 it("renders pinned tasks at the start of the list", () => {
   const div = document.createElement("div");

@@ -20,7 +20,7 @@ Head.propTypes = {
 };
 
 Head.defaultProps = {
-  title: ""
+  title: "",
 };
 
 export default Head;

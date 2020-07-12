@@ -30,7 +30,7 @@ const GoogleLogout = props => {
     uxMode,
     scope,
     accessType,
-    jsSrc
+    jsSrc,
   } = props;
 
   const { signOut, loaded } = useGoogleLogout({
@@ -46,7 +46,7 @@ const GoogleLogout = props => {
     redirectUri,
     scope,
     accessType,
-    onLogoutSuccess
+    onLogoutSuccess,
   });
   const disabled = disabledProp || !loaded;
 
@@ -65,19 +65,19 @@ const GoogleLogout = props => {
     border: "1px solid transparent",
     fontSize: 14,
     fontWeight: "500",
-    fontFamily: "Roboto, sans-serif"
+    fontFamily: "Roboto, sans-serif",
   };
 
   const hoveredStyle = {
     cursor: "pointer",
-    opacity: 0.9
+    opacity: 0.9,
   };
 
   const activeStyle = {
     cursor: "pointer",
     backgroundColor: theme === "dark" ? "#3367D6" : "#eee",
     color: theme === "dark" ? "#fff" : "rgba(0, 0, 0, .54)",
-    opacity: 1
+    opacity: 1,
   };
 
   const defaultStyle = (() => {
@@ -113,14 +113,14 @@ const GoogleLogout = props => {
       style: defaultStyle,
       type,
       disabled,
-      className
+      className,
     },
     [
       icon && <Icon key={1} active={active} />,
       <ButtonContent icon={icon} key={2}>
         {children || buttonText}
-      </ButtonContent>
-    ]
+      </ButtonContent>,
+    ],
   );
 
   return GoogleLogoutButton;
@@ -139,7 +139,7 @@ GoogleLogout.propTypes = {
   type: PropTypes.string,
   render: PropTypes.func,
   theme: PropTypes.string,
-  icon: PropTypes.bool
+  icon: PropTypes.bool,
 };
 
 GoogleLogout.defaultProps = {
@@ -147,11 +147,11 @@ GoogleLogout.defaultProps = {
   tag: "button",
   buttonText: "Logout of Google",
   disabledStyle: {
-    opacity: 0.6
+    opacity: 0.6,
   },
   icon: true,
   theme: "light",
-  jsSrc: "https://apis.google.com/js/api.js"
+  jsSrc: "https://apis.google.com/js/api.js",
 };
 
 export default GoogleLogout;

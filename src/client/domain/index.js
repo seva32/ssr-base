@@ -1,10 +1,10 @@
 export { Layout } from "./Layout";
-export { default as CookieBanner } from "./Cookies";
+export { default as CookieBanner } from "./CookieBanner";
 export { Home } from "./Home";
 export { NavBar } from "./NavBar";
 export { NotFound } from "./NotFound";
 export { Posts } from "./Posts";
 export { HomeResponsive } from "./HomeResponsive";
 export { SigninFormUI } from "./SigninFormUI";
-export { Signout } from "./SignoutPage";
+export { Signout } from "./Signout";
 export { SignupFormUI } from "./SignupFormUI";

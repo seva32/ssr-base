@@ -1,11 +1,11 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useEffect, useState} from "react";
-import {connect} from "react-redux";
-import {Helmet} from "react-helmet";
-import {LazyLoadImage} from "react-lazy-load-image-component";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import PropTypes from "prop-types"; // ES6
-import {fetchPhotos} from "../../actions/photos/photosActions";
+import { fetchPhotos } from "../../actions/photos/photosActions";
 import ArticleDetailModal from "../../components/ArticleDetailModal";
 
 const HomePage = props => {
@@ -57,7 +57,7 @@ const HomePage = props => {
     );
   };
 
-  const {fetchPhotos: loadPhotos} = props;
+  const { fetchPhotos: loadPhotos } = props;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -105,6 +105,6 @@ HomePage.defaultProps = {
 };
 
 export default {
-  component: connect(mapStateToProps, {fetchPhotos})(HomePage),
+  component: connect(mapStateToProps, { fetchPhotos })(HomePage),
   loadData,
 };

@@ -7,6 +7,7 @@
     "bcrypt": "^5.0.0",
     "cookies": "^0.8.0",
     "cookies-js": "^1.2.3",
+    "cors": "^2.8.5",
     "deepmerge": "^4.2.2",
     "escape-string-regexp": "^4.0.0",
     "eslint-config-problems": "^4.0.0",
@@ -72,7 +73,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "p": "rm -rf build && yarn build && node build",
-    "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\"",
+    "prettier": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\"",
     "eslint": "eslint \"**/*.js\" --ignore-pattern node_modules/"
   },
   "browserslist": {

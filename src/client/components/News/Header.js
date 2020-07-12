@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [menuOpen, setMenuToggle] = useState(false);
@@ -29,7 +29,7 @@ const Header = () => {
             </a>
             <div
               className="sidenav-overlay"
-              style={menuOpen ? {display: "block", opacity: 1} : null}
+              style={menuOpen ? { display: "block", opacity: 1 } : null}
               onClick={toggleMenu}
             />
             <ul

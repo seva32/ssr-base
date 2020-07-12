@@ -1,7 +1,13 @@
-import Home from "./domain/Home/Home";
-import NotFound from "./domain/Home/NotFound";
-import ArticleList from "./domain/Home/ArticleList";
 import App from "./App.js";
+import {
+  Home,
+  HomeResponsive,
+  NotFound,
+  Posts,
+  SigninFormUI,
+  Signout,
+  SignupFormUI,
+} from "./domain";
 
 export default [
   {
@@ -13,14 +19,30 @@ export default [
         exact: true,
       },
       {
-        ...Home,
-        path: "/photos",
+        ...HomeResponsive,
+        path: "/homeresponsive",
         exact: true,
       },
       {
-        path: "/posts/:id",
-        ...ArticleList,
+        path: "/posts",
+        ...Posts,
       },
+      {
+        path: "/signin",
+        ...SigninFormUI,
+      },
+      {
+        path: "/signup",
+        ...SignupFormUI,
+      },
+      {
+        path: "signout",
+        ...Signout,
+      },
+      // {
+      //   path: "/posts/:id",
+      //   ...PostsDetail,
+      // },
       {
         ...NotFound,
       },

@@ -26,7 +26,7 @@ const useGoogleLogin = ({
   const [loaded, setLoaded] = useState(false);
 
   const handleSigninSuccess = useCallback(
-    (res) => {
+    res => {
       /*
       offer renamed response keys to names that match use
     */
@@ -46,11 +46,11 @@ const useGoogleLogin = ({
       };
       onSuccess(res);
     },
-    [onSuccess]
+    [onSuccess],
   );
 
   const signIn = useCallback(
-    (e) => {
+    e => {
       if (e) {
         e.preventDefault(); // to prevent submit if used within form
       }
@@ -62,13 +62,13 @@ const useGoogleLogin = ({
         onRequest();
         if (responseType === "code") {
           GoogleAuth.grantOfflineAccess(options).then(
-            (res) => onSuccess(res),
-            (err) => onFailure(err)
+            res => onSuccess(res),
+            err => onFailure(err),
           );
         } else {
           GoogleAuth.signIn(options).then(
-            (res) => handleSigninSuccess(res),
-            (err) => onFailure(err)
+            res => handleSigninSuccess(res),
+            err => onFailure(err),
           );
         }
       }
@@ -81,7 +81,7 @@ const useGoogleLogin = ({
       onSuccess,
       prompt,
       responseType,
-    ]
+    ],
   );
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const useGoogleLogin = ({
         const GoogleAuth = window.gapi.auth2.getAuthInstance();
         if (!GoogleAuth) {
           window.gapi.auth2.init(params).then(
-            (res) => {
+            res => {
               if (!unmounted) {
                 setLoaded(true);
                 const signedIn = isSignedIn && res.isSignedIn.get();
@@ -118,11 +118,11 @@ const useGoogleLogin = ({
                 }
               }
             },
-            (err) => {
+            err => {
               setLoaded(true);
               onAutoLoadFinished(false);
               onFailure(err);
-            }
+            },
           );
         } else if (isSignedIn && GoogleAuth.isSignedIn.get()) {
           setLoaded(true);

@@ -1,3 +1,3 @@
 export default {
-  secret: process.env.TOKEN_SECRET,
+  secret: process.env.REACT_APP_TOKEN_SECRET,
 };

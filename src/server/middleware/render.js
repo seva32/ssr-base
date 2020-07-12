@@ -1,12 +1,12 @@
 import escapeStringRegexp from "escape-string-regexp";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import {ServerStyleSheet} from "styled-components";
-import {Helmet} from "react-helmet";
-import {StaticRouter} from "react-router-dom";
-import {Provider as ReduxProvider} from "react-redux";
+import { ServerStyleSheet } from "styled-components";
+import { Helmet } from "react-helmet";
+import { StaticRouter } from "react-router-dom";
+import { Provider as ReduxProvider } from "react-redux";
 import serialize from "serialize-javascript";
-import {renderRoutes} from "react-router-config";
+import { renderRoutes } from "react-router-config";
 
 import Routes from "../../client/Routes";
 
@@ -28,7 +28,7 @@ const renderMiddleware = () => (req, res) => {
   const htmlReplacements = {
     HTML_CONTENT: htmlContent,
     STYLE_TAGS: sheet.getStyleTags(),
-    SERVER_DATA: serialize({seb: "seb"}, {isJSON: true}),
+    SERVER_DATA: serialize({ seb: "seb" }, { isJSON: true }),
     HELMET_HTML_ATTRIBUTES: helmet.htmlAttributes.toString(),
     HELMET_META_ATTRIBUTES: `
        ${helmet.title.toString()}
@@ -36,7 +36,7 @@ const renderMiddleware = () => (req, res) => {
        ${helmet.link.toString()}
      `,
     HELMET_BODY_ATTRIBUTES: helmet.bodyAttributes.toString(),
-    PRELOADED_STATE: serialize(store.getState(), {isJSON: true}),
+    PRELOADED_STATE: serialize(store.getState(), { isJSON: true }),
   };
 
   Object.keys(htmlReplacements).forEach(key => {

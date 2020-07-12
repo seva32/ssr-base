@@ -9,10 +9,10 @@ function CookieBanner(props) {
   const [widthScreen, setWidthScreen] = useState(1000);
   const [cookies, setCookie, removeCookie] = useCookies(["cookies-consent"]);
   const [hasStorage, setHasStorage] = useState(
-    cookies["cookies-consent"] && cookies["cookies-consent"] !== ""
+    cookies["cookies-consent"] && cookies["cookies-consent"] !== "",
   );
 
-  const consentAction = (accept) => {
+  const consentAction = accept => {
     setClose(true);
     if (accept) {
       setCookie("cookies-consent", "accept", { path: "/" });

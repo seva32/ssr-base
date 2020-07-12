@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function Task({
-  task: {id, title, state},
+  task: { id, title, state },
   onArchiveTask,
   onPinTask,
 }) {
@@ -23,7 +23,7 @@ export default function Task({
           value={title}
           readOnly={true}
           placeholder="Input title"
-          style={{textOverflow: "ellipsis"}}
+          style={{ textOverflow: "ellipsis" }}
         />
       </div>
 

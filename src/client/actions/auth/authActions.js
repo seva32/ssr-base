@@ -8,11 +8,11 @@ import {
 export const signup = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post("/api/signup", formProps);
-    dispatch({type: AUTH_USER, payload: response.data.token});
+    dispatch({ type: AUTH_USER, payload: response.data.token });
     localStorage.setItem("token", response.data.token);
     return callback();
   } catch (e) {
-    dispatch({type: AUTH_ERROR_SIGNUP, payload: "Email in use"});
+    dispatch({ type: AUTH_ERROR_SIGNUP, payload: "Email in use" });
   }
 };
 
@@ -29,18 +29,18 @@ export const signout = () => dispatch => {
       );
     }
   }
-  dispatch({type: AUTH_USER, payload: ""});
-  dispatch({type: AUTH_ERROR_SIGNUP, payload: ""});
-  dispatch({type: AUTH_ERROR_SIGNIN, payload: ""});
+  dispatch({ type: AUTH_USER, payload: "" });
+  dispatch({ type: AUTH_ERROR_SIGNUP, payload: "" });
+  dispatch({ type: AUTH_ERROR_SIGNIN, payload: "" });
 };
 
 export const signin = (formProps, callback) => async dispatch => {
   try {
     const response = await axios.post("/api/signin", formProps);
-    dispatch({type: AUTH_USER, payload: response.data.token});
+    dispatch({ type: AUTH_USER, payload: response.data.token });
     localStorage.setItem("token", response.data.token);
     return callback();
   } catch (e) {
-    dispatch({type: AUTH_ERROR_SIGNIN, payload: "Invalid login credentials"});
+    dispatch({ type: AUTH_ERROR_SIGNIN, payload: "Invalid login credentials" });
   }
 };

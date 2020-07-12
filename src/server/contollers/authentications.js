@@ -5,7 +5,7 @@ import User from "../models/user";
 import config from "./config";
 
 // sub y iat son prop de jwt
-const tokenForUser = (user) => {
+const tokenForUser = user => {
   const timestamp = new Date().getTime();
   return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
 };
@@ -34,10 +34,10 @@ export const signup = (req, res, next) => {
     const user = new User({ email: email, password: password });
     user
       .save()
-      .then((user) => {
+      .then(user => {
         res.json({ token: tokenForUser(user) });
       })
-      .catch((err) => {
+      .catch(err => {
         next(err);
       });
   });
