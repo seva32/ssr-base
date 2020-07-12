@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
+    "bcrypt": "^5.0.0",
     "cookies": "^0.8.0",
     "cookies-js": "^1.2.3",
     "deepmerge": "^4.2.2",
@@ -13,8 +14,15 @@
     "eslint-plugin-react-hooks": "^4.0.5",
     "eslint-plugin-sonarjs": "^0.5.0",
     "express": "^4.17.1",
+    "formik": "^2.1.4",
+    "jwt-simple": "^0.5.6",
+    "mobile-detect": "^1.4.4",
+    "mongoose": "^5.9.23",
     "morgan": "^1.10.0",
     "node-sass": "^4.14.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
@@ -32,7 +40,8 @@
     "semantic-ui-react": "^0.88.2",
     "serialize-javascript": "^4.0.0",
     "source-map-explorer": "^2.4.2",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "yup": "^0.29.1"
   },
   "eslintConfig": {
     "extends": [
@@ -62,7 +71,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "p": "rm -rf build && yarn build && node build",
-    "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\""
+    "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\"",
+    "eslint": "eslint \"**/*.js\" --ignore-pattern node_modules/"
   },
   "browserslist": {
     "production": [

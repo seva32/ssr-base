@@ -8,7 +8,7 @@ import {matchRoutes} from "react-router-config";
 
 import auth from "../../client/reducers/authReducer";
 import posts from "../../client/reducers/postsReducer";
-import photos from "../../client/reducers/photosReducer";
+// import photos from "../../client/reducers/photosReducer";
 import Routes from "../../client/Routes";
 
 const storeMiddleware = () => async (req, res, next) => {
@@ -39,7 +39,7 @@ const storeMiddleware = () => async (req, res, next) => {
   const rootReducer = combineReducers({
     auth: persistReducer(authPersistConfig, auth),
     posts,
-    photos,
+    // photos,
   });
 
   const reducer = persistReducer(rootPersistConfig, rootReducer);

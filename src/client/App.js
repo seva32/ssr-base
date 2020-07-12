@@ -1,9 +1,9 @@
 import React from "react";
 import {renderRoutes} from "react-router-config";
 import PropTypes from "prop-types";
-import ErrorBoundary from "./components/ErrorBoundry";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import ErrorBoundary from "./components/News/ErrorBoundry";
+import Header from "./components/News/Header";
+import Footer from "./components/News/Footer";
 
 const App = ({route}) => {
   return (
